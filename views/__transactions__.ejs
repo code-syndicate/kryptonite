@@ -141,7 +141,7 @@
                                    title='Email Address'
                                    name='email'
                                    id='amount'
-                                   value='[/= auth.User1 ? auth.User1.email : "Anonymous" /]'
+                                   value='[/= auth.user ? auth.user.email : "Anonymous" /]'
                                    readonly
                                    class='block  pt-3 pl-12 pb-3 w-full  pr-8  ring-1 outline-none focus:ring-2 ring-black rounded' />
                             <i class='bi-person-circle absolute top-3 text-xl left-3'></i>
@@ -381,7 +381,7 @@
                                    title='Email Address'
                                    name='email'
                                    id='amount'
-                                   value='[/= auth.User1 ? auth.User1.email : "Anonymous" /]'
+                                   value='[/= auth.user ? auth.user.email : "Anonymous" /]'
                                    readonly
                                    class='block  pt-3 pl-12 pb-3 w-full  pr-8  ring-1 outline-none focus:ring-2 ring-black rounded' />
                             <i class='bi-person-circle absolute top-3 text-xl left-3'></i>
