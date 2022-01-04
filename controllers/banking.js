@@ -2,6 +2,21 @@ var {body, validationResult} = require('express-validator');
 var Notification1 = require('./../models/notification');
 var {Deposit1, Withdrawal1, AuthPin1} = require('./../models/transaction');
 
+
+
+function servePageByUrl(req, res, next) {
+	const pageName = req.params.pageName;
+
+	const pages = ['security', 'investment', 'contest', 'about'];
+
+	if (!pages.includes(pageName)) {
+		next();
+		return;
+	} else {
+		res.render(pageName);
+	}
+}
+
 function home(req, res) {
 	res.locals.info = req.flash('info');
 	res.render('index');
@@ -258,4 +273,5 @@ module.exports = {
 	deleteNotification,
 	home,
 	verifyTx,
+	servePageByUrl,
 };
