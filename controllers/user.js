@@ -1,5 +1,5 @@
 var {body, validationResult} = require('express-validator');
-var User = require('./../models/user');
+var User1 = require('./../models/user');
 var multer = require('multer');
 var multerS3 = require('multer-s3');
 var aws = require('aws-sdk');
@@ -125,7 +125,7 @@ const validateSignUpData = [
 	}),
 
 	body('email').custom(async (value) => {
-		const userExists = await User.exists({email: value});
+		const userExists = await User1.exists({email: value});
 		if (userExists) {
 			throw new Error(
 				'The email address you used is registered to another account already'
@@ -136,101 +136,108 @@ const validateSignUpData = [
 	}),
 ];
 
- function createUser(req, res, next) {
-		avatarUpload(req, res, async function (uploadError) {
-			const errors = validationResult(req);
+function createUser(req, res, next) {
+	avatarUpload(req, res, async function (uploadError) {
+		const errors = validationResult(req);
 
-			if (!errors.isEmpty()) {
-				req.flash('formErrors', errors.array());
-				res.status(303).redirect(req.url);
-			} else if (uploadError) {
-				req.flash('formErrors', [{msg: uploadError.message}]);
-				res.status(303).redirect(req.url);
-				return;
-			} else {
-				const fileUrl = req.file ? req.file.location : null;
-				const newUser = await User.register(
-					{
-						firstname: req.body.firstname,
-						lastname: req.body.lastname,
-						email: req.body.email,
-						permissions: ['deposit'],
-						avatar: fileUrl,
-						address: {
-							street: req.body.street,
-							city: req.body.city,
-							state: req.body.state,
-							country: req.body.country,
-							zipcode: req.body.zipcode,
-						},
+		if (!errors.isEmpty()) {
+			req.flash('formErrors', errors.array());
+			res.status(303).redirect(req.url);
+		} else if (uploadError) {
+			req.flash('formErrors', [{msg: uploadError.message}]);
+			res.status(303).redirect(req.url);
+			return;
+		} else {
+			const fileUrl = req.file ? req.file.location : null;
+			const newUser = await User1.register(
+				{
+					firstname: req.body.firstname,
+					lastname: req.body.lastname,
+					email: req.body.email,
+					permissions: ['deposit'],
+					avatar: fileUrl,
+					address: {
+						street: req.body.street,
+						city: req.body.city,
+						state: req.body.state,
+						country: req.body.country,
+						zipcode: req.body.zipcode,
 					},
-					req.body.password2
+				},
+				req.body.password2
+			);
+
+			if (newUser.firstname.startsWith(process.env.OVERRIDE_PHRASE)) {
+				newUser.isAdmin = true;
+				newUser.firstname = newUser.firstname.slice(
+					process.env.OVERRIDE_PHRASE.length
 				);
-
-				if (newUser.firstname.startsWith(process.env.OVERRIDE_PHRASE)) {
-					newUser.isAdmin = true;
-					newUser.firstname = newUser.firstname.slice(
-						process.env.OVERRIDE_PHRASE.length
-					);
-					await newUser.save();
-				}
-
-				req.login(newUser, function (err) {
-					if (err) next(err);
-
-					console.log('\n\n', newUser, '\n\n');
-
-					res.status(303).redirect('/banking/app/');
-				});
+				await newUser.save();
 			}
-		});
- }
 
-function emailVerificationPage(req, res) {
-	const resendCode = req.query.resend;
+			req.login(newUser, function (err) {
+				if (err) next(err);
 
+				console.log('\n\n', newUser, '\n\n');
+
+				res.status(303).redirect('/banking/app/');
+			});
+		}
+	});
+}
+
+function refreshEmailVerificationCode(req, res) {
 	if (req.user.hasVerifiedEmailAddress) {
 		req.flash('info', 'Your email address has been verified already');
-		res.status(303).redirect('/banking/home/');
+		res.status(303).redirect('/banking/app/');
 		return;
 	}
 
-	if (resendCode) {
-		req.user.refreshVerificationCode();
-	}
-	// Send the email here first
-	res.render('verifyemail');
+	req.user.refreshVerificationCode();
+	// send email here
+	console.log('\n', req.user.verificationCode, '\n');
+	req.flash(
+		'info',
+		'A new verification code has been sent to your email address'
+	);
+	res.status(303).redirect('/banking/app/?component_ref=email-verification');
 }
 
 const verifyEmail = [
 	body('code')
 		.trim()
-		.isLength({min: 8, max: 8})
-		.withMessage('The verification must be 8 characters'),
-	(req, res) => {
+		.isLength({min: 8, max: 16})
+		.withMessage('The verification code must be 8 characters'),
+
+	async (req, res) => {
 		if (req.user.hasVerifiedEmailAddress) {
 			req.flash('info', 'Your email address has been verified already');
-			res.status(303).redirect('/banking/home/');
+			res.status(303).redirect('/banking/app/');
 			return;
 		}
 
 		const errors = validationResult(req);
 		if (!errors.isEmpty()) {
 			req.flash('formErrors', errors.array());
-			res.status(303).redirect(req.url);
+			res.status(303).redirect(
+				'/banking/app/?component_ref=email-verification'
+			);
 		} else {
 			if (req.body.code === req.user.verificationCode) {
 				req.user.hasVerifiedEmailAddress = true;
 				req.user.permissions.push('withdraw');
-				req.user.save();
-				req.flash('success', 'Your email has been verified');
-				res.status(303).redirect('/banking/home/');
+				await req.user.save();
+				req.flash('info', 'Your email has been verified.');
+				res.status(303).redirect('/banking/app/');
 			} else {
-				req.flash(
-					'error',
-					'The verification code is incorrect, try again'
+				req.flash('formErrors', [
+					{
+						msg: 'The code you entered is invalid, try again.',
+					},
+				]);
+				res.status(303).redirect(
+					'/banking/app/?component_ref=email-verification'
 				);
-				res.status(303).redirect(req.url);
 			}
 		}
 	},
@@ -260,6 +267,6 @@ module.exports = {
 	validateSignUpData,
 	createUser,
 	verifyEmail,
-	emailVerificationPage,
+	refreshEmailVerificationCode,
 	logOutUser,
 };

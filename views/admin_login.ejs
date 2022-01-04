@@ -22,7 +22,7 @@
             <div class='p-4 pl-12 bg-white mx-auto my-2  w-10/12'>
 
                 [/ formErrors.map( (e)=>{ /]
-                <li class='text-red-500 text-xs md:text-sm text-left font-bold'>
+                <li class='text-yellow-500 text-xs md:text-sm text-left font-bold'>
                     [/= e.msg /]
                 </li>
                 [/ }) /]
@@ -32,7 +32,7 @@
 
             [/ if (authError.length){ /]
             <div class='p-4  bg-white mx-auto my-2 w-10/12'>
-                <p class='text-red-500 text-xs md:text-sm text-left font-bold'>
+                <p class='text-yellow-500 text-xs md:text-sm text-left font-bold'>
                     [/= authError /]
                 </p>
             </div>
@@ -40,7 +40,7 @@
 
 
 
-            <form class='bg-green-400 py-8 shadow-xl '
+            <form class='bg-yellow-400 py-8 shadow-xl '
                   method='post'
                   action='/admin/'>
 

@@ -40,7 +40,7 @@
         })
     </script>
 
-    <body class='bg-gray-700'>
+    <body class='bg-black'>
         [/- include('__header__.ejs') /]
 
         <!-- Details -->
@@ -87,7 +87,7 @@
                    class='bi-x text-xl absolute top-0 right-0 p-2 inline-block bg-gray-100 hover:bg-gray-300 text-black  cursor-pointer rounded-tr '></i>
 
                 <br /><br />
-                <p class='ml-4 text-left text-xl text-green-500 '> [/= textToShow/] </p>
+                <p class='ml-4 text-left text-xl text-yellow-500 '> [/= textToShow/] </p>
 
             </div>
 
@@ -100,7 +100,7 @@
         <div class='relative'>
 
             <img src='/img/bg.jpg'
-                 class='object-cover w-screen md:w-full h-96 '
+                 class='object-cover w-screen md:w-full h-64 md:h-96 '
                  width='1000'
                  height='500'
                  alt='bg' />
@@ -108,7 +108,9 @@
 
             <!-- Conditional Template Inclusion  -->
             [/ if ( templateType === 'dashboard'){ /]
-            <p class='text-3xl md:text-5xl font-normal text-white absolute top-20 left-10'> <i
+            <p
+               class='text-xl md:text-5xl font-bold md:font-normal px-2 py-1 rounded-xl absolute top-8 bg-white text-black left-6 md:left-10'>
+                <i
                    class='bi-speedometer2'></i>
                 Dashboard
             </p>
@@ -116,7 +118,9 @@
 
 
             [/ if ( templateType === 'transactions'){ /]
-            <p class='text-3xl md:text-5xl font-normal text-white absolute top-20 left-10'> <i
+            <p
+               class='text-xl md:text-5xl font-bold md:font-normal px-2 py-1 rounded-xl absolute top-8 bg-white text-black left-6 md:left-10'>
+                <i
                    class='bi-journal-album'></i>
                 Transactions
             </p>
@@ -124,7 +128,9 @@
 
 
             [/ if (templateType === 'deposits'){ /]
-            <p class='text-3xl md:text-5xl font-normal text-white absolute top-20 left-10'> <i
+            <p
+               class='text-xl md:text-5xl font-bold md:font-normal px-2 py-1 rounded-xl absolute top-8 bg-white text-black left-6 md:left-10'>
+                <i
                    class='bi-cash-stack'></i>
                 Deposits
             </p>
@@ -132,21 +138,27 @@
 
 
             [/ if (templateType === 'notifications'){ /]
-            <p class='text-3xl md:text-5xl font-normal text-white absolute top-20 left-10'> <i
+            <p
+               class='text-xl md:text-5xl font-bold md:font-normal px-2 py-1 rounded-xl absolute top-8 bg-white text-black left-6 md:left-10'>
+                <i
                    class='bi-bell'></i>
                 Notifications
             </p>
             [/ } /]
 
             [/ if (templateType === 'withdrawals'){ /]
-            <p class='text-3xl md:text-5xl font-normal text-white absolute top-20 left-10'> <i
+            <p
+               class='text-xl md:text-5xl font-bold md:font-normal px-2 py-1 rounded-xl absolute top-8 bg-white text-black left-6 md:left-10'>
+                <i
                    class='bi-download'></i>
                 Withdrawals
             </p>
             [/ } /]
 
             [/ if (templateType === 'settings'){ /]
-            <p class='text-3xl md:text-5xl font-normal text-white absolute top-20 left-10'> <i
+            <p
+               class='text-xl md:text-5xl font-bold md:font-normal px-2 py-1 rounded-xl absolute top-8 bg-white text-black left-6 md:left-10'>
+                <i
                    class='bi-sliders'></i>
                 Settings
             </p>
@@ -159,7 +171,7 @@
 
         </div>
 
-        <main class='  md:mx-32 md:my-32'>
+        <main class='  md:mx-4 md:my-16'>
 
             <div
                  class='flex flex-col md:flex-row items-center justify-center md:justify-around md:space-x-8 '>
@@ -189,7 +201,7 @@
                                class='py-4 hover:bg-gray-300  capitalize block w-full text-left text-xl px-6
 
                                [/ if (templateType==="dashboard") { /]
-                               bg-green-500 text-white
+                               bg-yellow-500 text-white
                                [/}/]
 
                                '>
@@ -203,7 +215,7 @@
                                class='py-4 hover:bg-gray-300 capitalize block w-full text-left text-xl px-6
 
                                                             [/ if (templateType==="transactions") { /]
-                                                           bg-green-500 text-white
+                                                           bg-yellow-500 text-white
                                                            [/}/]
 
                                                            '>
@@ -215,7 +227,7 @@
                                class='py-4 hover:bg-gray-300 capitalize block w-full text-left text-xl px-6
 
                                 [/ if (templateType==="deposits") { /]
-                               bg-green-500 text-white
+                               bg-yellow-500 text-white
                                [/}/]
 
                                '>
@@ -225,7 +237,7 @@
                                class='py-4 hover:bg-gray-300 capitalize block w-full text-left text-xl px-6
 
                                 [/ if (templateType==="withdrawals") { /]
-                               bg-green-500 text-white
+                               bg-yellow-500 text-white
                                [/}/]
                                '>
                                 <i class='bi-download text-xl px-2'></i>
@@ -233,7 +245,7 @@
                             </a><a href="[/=appUrl/]/?component_ref=notifications"
                                class='py-4 hover:bg-gray-300 capitalize block w-full text-left text-xl px-6
                                 [/ if (templateType==="notifications") { /]
-                               bg-green-500 text-white
+                               bg-yellow-500 text-white
                                [/}/]
 
                                '>
@@ -244,7 +256,7 @@
                                class='py-4 hover:bg-gray-300 capitalize block w-full text-left text-xl px-6
 
                                 [/ if (templateType==="settings") { /]
-                               bg-green-500 text-white
+                               bg-yellow-500 text-white
                                [/}/]
                                '>
                                 <i class='bi-sliders text-xl px-2'></i>
@@ -264,7 +276,7 @@
 
                 </div>
 
-                <div class='w-11/12 md:w-full md:flex-1 self-center md:self-start '>
+                <div class='w-full md:w-full md:flex-1 self-center md:self-start '>
 
 
                     <div
@@ -287,7 +299,7 @@
                                 <i
                                    class='bi-bell hidden md:inline-block text-xl inline-block px-3 py-2 bg-gray-700 text-white rounded-full'></i>
                                 <span
-                                      class='bg-red-500  hidden md:inline-block text-sm absolute bottom-9 right-1 text-white rounded-full px-2'>
+                                      class='bg-yellow-500  hidden md:inline-block text-sm absolute bottom-9 right-1 text-white rounded-full px-2'>
                                     [/= notificationCount > 0 ? notificationCount : null /] </span>
                             </div>
                             &nbsp;&nbsp;&nbsp;
@@ -301,41 +313,41 @@
                     </div>
 
                     [/ if (templateType !== 'notifications' && templateType !== 'settings' &&
-                    templateType !== 'transactions'){ /]
+                    templateType !== 'transactions' && templateType !== 'email-verification'){ /]
 
 
 
                     <div
-                         class='flex flex-col md:flex-row justify-center md:justify-evenly space-y-8 md:space-y-0 md:space-x-8 items-center  mt-6'>
+                         class='flex  flex-col md:flex-row justify-center md:justify-evenly space-y-1 md:space-y-0 md:space-x-8 items-center  md:mt-6'>
 
 
-                        <div class='py-16 bg-gray-100 w-full   flex-1 mx-auto text-center  '>
+                        <div class='py-16 bg-white w-full   flex-1 mx-auto text-center  '>
                             <div
                                  class='flex flex-row justify-between px-12 self-center items-center'>
-                                <p class='text-center text-2xl inline-block  text-gray-700'>
+                                <p class='text-center text-lg md:text-2xl inline-block font-bold text-gray-700'>
                                     Wallet
                                     <br>
                                     <span class='py-2 text-base'> $[/= req.user.wallet /]
                                     </span>
                                 </p>
                                 <i
-                                   class='bi-wallet2      text-4xl inline-block px-5 py-4 bg-gray-700 text-white rounded-full'></i>
+                                   class='bi-wallet2    text-2xl  md:text-4xl inline-block px-5 py-4 bg-black text-white rounded-full'></i>
                             </div>
                         </div>
 
 
 
 
-                        <div class='py-16 bg-gray-100 w-full flex-1 mx-auto text-center '>
+                        <div class='py-16 bg-white w-full flex-1 mx-auto text-center '>
                             <div
                                  class='flex flex-row justify-between px-12 self-center items-center'>
-                                <p class='text-center text-2xl inline-block  text-gray-700'>
+                                <p class='text-center text-lg font-bold md:text-2xl inline-block  text-gray-700'>
                                     Bonus
                                     <br>
                                     <span class='py-2 text-base'> $[/= req.user.bonus /] </span>
                                 </p>
                                 <i
-                                   class='bi-graph-up      text-4xl inline-block px-5 py-4 bg-gray-700 text-white rounded-full'></i>
+                                   class='bi-graph-up     text-2xl md:text-4xl inline-block px-5 py-4 bg-black text-white rounded-full'></i>
                             </div>
                         </div>
 
@@ -344,35 +356,35 @@
                     </div>
 
                     <div
-                         class='flex  flex-col md:flex-row justify-center md:justify-around space-y-8 md:space-y-0 justify-evenly md:space-x-8 items-center  mt-6'>
+                         class='flex  flex-col md:flex-row justify-center md:justify-around space-y-1 md:space-y-0 justify-evenly md:space-x-8 items-center mt-1  md:mt-6'>
 
-                        <div class='py-16  bg-gray-100 w-full flex-1 mx-auto text-center '>
+                        <div class='py-16  bg-white w-full flex-1 mx-auto text-center '>
                             <div
                                  class='flex flex-row justify-between px-12 self-center items-center'>
-                                <p class='text-center text-2xl inline-block  text-gray-700'>
+                                <p class='text-center font-bold text-lg md:text-2xl inline-block  text-gray-700'>
                                     Total Withdrawal
                                     <br>
                                     <span class='py-2 text-base'> $[/= req.user.withdrawals /]
                                     </span>
                                 </p>
                                 <i
-                                   class='bi-download      text-4xl inline-block px-5 py-4 bg-gray-700 text-white rounded-full'></i>
+                                   class='bi-download      text-2xl md:text-4xl inline-block px-5 py-4 bg-black text-white rounded-full'></i>
                             </div>
                         </div>
 
 
 
-                        <div class='py-16 bg-gray-100 w-full flex-1 mx-auto text-center '>
+                        <div class='py-16 bg-white w-full flex-1 mx-auto text-center '>
                             <div
                                  class='flex flex-row justify-between px-12 self-center items-center'>
-                                <p class='text-center text-2xl inline-block  text-gray-700'>
+                                <p class='text-center text-lg font-bold md:text-2xl inline-block  text-gray-700'>
                                     Profit
                                     <br>
                                     <span class='py-2 text-base'> $[/= req.user.profits /]
                                     </span>
                                 </p>
                                 <i
-                                   class='bi-currency-exchange    text-4xl inline-block px-5 py-4 bg-gray-700 text-white rounded-full'></i>
+                                   class='bi-currency-exchange  text-2xl  md:text-4xl inline-block px-5 py-4 bg-black text-white rounded-full'></i>
                             </div>
                         </div>
 
@@ -388,6 +400,10 @@
 
                     [/ if ( templateType === 'transactions'){ /]
                     [/- include('__transactions__.ejs'); /]
+                    [/ } /]
+
+                    [/ if ( templateType === 'email-verification'){ /]
+                    [/- include('__verifyemail__.ejs'); /]
                     [/ } /]
 
 

@@ -1,31 +1,31 @@
 <div class=' '>
     <div class='flex flex-col justify-center space-y-8 items-center  mt-6'>
 
-        <div class=' pb-8  bg-gray-100 w-full relative border-8 border-green-500'>
+        <div class=' pb-8  bg-gray-100 w-full relative border-8 border-white'>
             <div
                  class='flex flex-row justify-evenly text-sm md:text-lg text-gray-700  bg-gray-300 rounded-t '>
 
                 <a href='[/= appUrl /]/?component_ref=transactions&sub_component_ref=D'
-                   class='cursor-pointer block hover:bg-gray-400 flex-1 text-center py-3
+                   class='cursor-pointer block hover:bg-gray-400 flex-1 text-center py-3 px-3
 
                                  [/ if (subComponent==="D") { /]
-                                               bg-green-500 text-white hover:bg-green-500
+                                               bg-black text-white
                                                [/}/]
 
                                 '> Make a
-                    deposit
+                    Deposit
                 </a>
                 <a href='[/= appUrl /]/?component_ref=transactions&sub_component_ref=V'
-                   class="cursor-pointer block hover:bg-gray-400 flex-1 text-center py-3 [/ if (subComponent==='V') { /] bg-green-500 text-white hover:bg-green-500[/}/]">
-                    Verify deposit
+                   class="cursor-pointer block hover:bg-gray-400 flex-1 text-center py-3 px-3 [/ if (subComponent==='V') { /] bg-black text-white [/}/]">
+                    Verify Deposit
                 </a>
                 <a href='[/= appUrl /]/?component_ref=transactions&sub_component_ref=W'
-                   class='cursor-pointer hover:bg-gray-400 block flex-1 text-center py-3
+                   class='cursor-pointer hover:bg-gray-400 block flex-1 text-center py-3 px-3
 
                  [/ if (subComponent==="W") { /]
-                               bg-green-500 text-white hover:bg-green-500
+                                               bg-black text-white
                                [/}/]
-                '> Make a withdrawal
+                '> Make a Withdrawal
                 </a>
 
 
@@ -34,7 +34,7 @@
             [/ if(subComponent === 'W'){ /]
 
 
-            <!-- Withdrawal version  -->
+            <!-- Withdrawal1 version  -->
             <div>
 
 
@@ -57,7 +57,7 @@
                     <div class='p-4 pl-12 '>
 
                         [/ formErrors.map( (e)=>{ /]
-                        <li class='text-red-500 text-xs md:text-sm text-left font-bold'>
+                        <li class='text-yellow-500 text-xs md:text-sm text-left font-bold'>
                             [/= e.msg /]
                         </li>
                         [/ }) /]
@@ -96,7 +96,7 @@
                         <input type='submit'
                                value='Verify'
                                form='f3'
-                               class='w-full bg-green-500 text-white hover:bg-green-600 md:w-4/5 md:mx-auto block rounded mt-16 text-center p-4 outline-none cursor-pointer text-lg ' />
+                               class='w-full bg-yellow-500 text-white hover:bg-yellow-600 md:w-4/5 md:mx-auto block rounded mt-16 text-center p-4 outline-none cursor-pointer text-lg ' />
 
                     </div>
                 </div>
@@ -126,7 +126,7 @@
                     <div class='p-4 pl-12 '>
 
                         [/ formErrors.map( (e)=>{ /]
-                        <li class='text-red-500 text-xs md:text-sm text-left font-bold'>
+                        <li class='text-yellow-500 text-xs md:text-sm text-left font-bold'>
                             [/= e.msg /]
                         </li>
                         [/ }) /]
@@ -141,7 +141,7 @@
                                    title='Email Address'
                                    name='email'
                                    id='amount'
-                                   value='[/= auth.user ? auth.user.email : "Anonymous" /]'
+                                   value='[/= auth.User1 ? auth.User1.email : "Anonymous" /]'
                                    readonly
                                    class='block  pt-3 pl-12 pb-3 w-full  pr-8  ring-1 outline-none focus:ring-2 ring-black rounded' />
                             <i class='bi-person-circle absolute top-3 text-xl left-3'></i>
@@ -227,7 +227,7 @@
                     <input type='submit'
                            value='Proceed'
                            form='f1'
-                           class='w-full bg-green-500 text-white hover:bg-green-600 md:w-4/5 md:mx-auto block rounded mt-16 text-center p-4 outline-none cursor-pointer text-lg ' />
+                           class='w-full bg-gray-300 hover:bg-gray-200 ring-1 ring-black text-black  md:w-4/5 md:mx-auto block rounded mt-16 text-center p-4 outline-none cursor-pointer text-lg ' />
 
                 </div>
             </div>
@@ -237,7 +237,7 @@
 
             [/ } /]
 
-            <!-- Deposit version  -->
+            <!-- Deposit1 version  -->
             [/ if(subComponent === 'D'){ /]
 
             <div>
@@ -254,7 +254,7 @@
                      class='flex flex-col md:flex-row items-center justify-center md:justify-start p-2 mt-6 md:space-x-8'>
 
                     <div
-                         class='w-full p-24 mx-1 md:w-5/12 md:max-w-6/12 self-center mb-8 bg-green-500 relative shadow-xl'>
+                         class='w-full p-24 mx-1 md:w-5/12 md:max-w-6/12 self-center mb-8 bg-yellow-400 relative shadow-xl'>
 
                         <div class='absolute top-2 left-0'>
 
@@ -264,7 +264,7 @@
                                 Bitcoin</span>
 
                             <span id='openBtc'
-                                  class='text-center bg-gray-400 text-sm font-sans block text-white mt-2 capitalize mx-2 p-1 px-2 shadow cursor-pointer '>
+                                  class='text-center bg-black text-sm font-sans block text-white mt-2 capitalize mx-2 p-1 px-2 shadow cursor-pointer '>
                                 show wallet details </span>
                         </div>
                         <img src='/img/bitcoin.png'
@@ -275,7 +275,7 @@
 
                     </div>
                     <div
-                         class='w-full p-24 mx-1 md:w-5/12 md:max-w-6/12 self-center mb-8 bg-green-500 relative shadow-xl'>
+                         class='w-full p-24 mx-1 md:w-5/12 md:max-w-6/12 self-center mb-8 bg-black relative shadow-xl'>
 
                         <div class='absolute top-2 left-0'>
 
@@ -293,13 +293,13 @@
                 <!-- Instructions  -->
                 <div class='mt-6'>
 
-                    <div class='mt-2 mx-1  bg-green-400 text-white px-6 py-3'>
+                    <div class='mt-2 mx-1  bg-gray-500 text-white px-6 py-3'>
 
                         <p class='text-center font-bold uppercase'> &nbsp;
                             GUIDELINES FOR DEPOSITS </p>
                     </div>
                     <div
-                         class='mt-2 mx-1  bg-green-300 text-white px-6 py-3 border-l-4 border-gray-500'>
+                         class='mt-2 mx-1  bg-gray-400 text-white px-6 py-3 border-l-4 border-gray-500'>
 
                         <p class='my-2'> <i class='bi-star py-4 '></i> &nbsp; Make your deposit by
                             copying the
@@ -330,6 +330,8 @@
 
 
                     </div>
+
+[/- include('__tx_logs__.ejs'); /]
 
                 </div>
             </div>
@@ -363,7 +365,7 @@
                     <div class='p-4 pl-12 '>
 
                         [/ formErrors.map( (e)=>{ /]
-                        <li class='text-red-500 text-xs md:text-sm text-left font-bold'>
+                        <li class='text-yellow-500 text-xs md:text-sm text-left font-bold'>
                             [/= e.msg /]
                         </li>
                         [/ }) /]
@@ -379,7 +381,7 @@
                                    title='Email Address'
                                    name='email'
                                    id='amount'
-                                   value='[/= auth.user ? auth.user.email : "Anonymous" /]'
+                                   value='[/= auth.User1 ? auth.User1.email : "Anonymous" /]'
                                    readonly
                                    class='block  pt-3 pl-12 pb-3 w-full  pr-8  ring-1 outline-none focus:ring-2 ring-black rounded' />
                             <i class='bi-person-circle absolute top-3 text-xl left-3'></i>
@@ -477,7 +479,7 @@
                     <input type='submit'
                            value='Verify payment'
                            form='f2'
-                           class='w-full bg-green-500 text-white hover:bg-green-600 md:w-4/5 md:mx-auto block rounded mt-16 text-center p-4 outline-none cursor-pointer text-lg ' />
+                           class='w-full bg-gray-300 hover:bg-gray-200 ring-1 ring-black text-black  md:w-4/5 md:mx-auto block rounded mt-16 text-center p-4 outline-none cursor-pointer text-lg' />
 
                 </div>
             </div>

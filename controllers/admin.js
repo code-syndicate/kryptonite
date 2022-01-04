@@ -1,6 +1,6 @@
-const User = require('./../models/user');
-const {Deposit, Withdrawal, AuthPin} = require('./../models/transaction');
-const Notification = require('./../models/notification');
+const User1 = require('./../models/user');
+const {Deposit1, Withdrawal1, AuthPin1} = require('./../models/transaction');
+const Notification1 = require('./../models/notification');
 const {body, validationResult} = require('express-validator');
 
 function logIn(req, res) {
@@ -11,12 +11,12 @@ function logIn(req, res) {
 
 async function deleteUser(req, res) {
 	const id = req.params.clientId;
-	await Withdrawal.deleteMany({client: id}).exec();
-	await Deposit.deleteMany({client: id}).exec();
-	await Notification.deleteMany({listener: id}).exec();
-	await AuthPin.deleteMany({client: id}).exec();
+	await Withdrawal1.deleteMany({client: id}).exec();
+	await Deposit1.deleteMany({client: id}).exec();
+	await Notification1.deleteMany({listener: id}).exec();
+	await AuthPin1.deleteMany({client: id}).exec();
 
-	await User.findByIdAndDelete(id).exec();
+	await User1.findByIdAndDelete(id).exec();
 
 	res.redirect('/admin/overview/?ui=users');
 }
@@ -28,9 +28,9 @@ async function overview(req, res) {
 
 	if (!uis.includes(UI)) UI = 'main';
 
-	const clients = await User.find({}).exec();
-	const deposits = await Deposit.find({}).populate('client').exec();
-	const withdrawals = await Withdrawal.find({}).populate('client').exec();
+	const clients = await User1.find({}).exec();
+	const deposits = await Deposit1.find({}).populate('client').exec();
+	const withdrawals = await Withdrawal1.find({}).populate('client').exec();
 
 	res.locals.authError = req.flash('error');
 	res.locals.formErrors = req.flash('formErrors');
@@ -65,7 +65,7 @@ const editClient = [
 			return;
 		}
 
-		let client = await User.findById(req.body.clientId).exec();
+		let client = await User1.findById(req.body.clientId).exec();
 		client.wallet = req.body.wallet;
 		client.bonus = req.body.bonus;
 		client.profits = req.body.profit;

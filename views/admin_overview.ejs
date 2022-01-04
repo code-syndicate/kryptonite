@@ -22,10 +22,10 @@
 
     </head>
 
-    <body class='bg-gray-300 bg-green-500'>
+    <body class='bg-gray-300 bg-yellow-500'>
         <div class='bg-white p-4'>
-            <i class='bi-speedometer2 text-2xl text-green-500'></i> &nbsp;
-            <p class='text-left text-green-500 text-xl  inline-block'> Manage [/=siteName /]
+            <i class='bi-speedometer2 text-2xl text-yellow-500'></i> &nbsp;
+            <p class='text-left text-yellow-500 text-xl  inline-block'> Manage [/=siteName /]
             </p>
         </div>
 
@@ -35,7 +35,7 @@
 
             <div class='bg-white py-2 px-6 relative'>
                 <p class='font-bold text-left text-gray-700 text-lg'>
-                    <i class='bi-person-square text-2xl text-green-500'></i> &nbsp; Clients
+                    <i class='bi-person-square text-2xl text-yellow-500'></i> &nbsp; Clients
 
                 </p>
 
@@ -57,7 +57,7 @@
 
             <div class='bg-white py-2 px-6 relative'>
                 <p class='font-bold text-left text-gray-700 text-lg'>
-                    <i class='bi-journal-album text-2xl text-green-500'></i> &nbsp; Deposits
+                    <i class='bi-journal-album text-2xl text-yellow-500'></i> &nbsp; Deposits
 
                 </p>
                 <br />
@@ -79,12 +79,12 @@
 
             <div class='bg-white py-2 px-6 relative'>
                 <p class='font-bold text-left text-gray-700 text-lg'>
-                    <i class='bi-download text-2xl text-green-500'></i> &nbsp; Withdrawal requests
+                    <i class='bi-download text-2xl text-yellow-500'></i> &nbsp; Withdrawal requests
 
                 </p>
                 <br />
 
-                <p class='text-base pb-4'> Manage withdrawal requests, view withdrawal requests made
+                <p class='text-base pb-4'> Manage Withdrawal requests, view Withdrawal requests made
                     by users.
                 </p>
 
@@ -125,7 +125,7 @@
                     </th>
                     <th class='px-3 py-4'> Bonus </th>
                     <th class='px-3 py-4'> Profit </th>
-                    <th class='px-3 py-4'> Total withdrawal </th>
+                    <th class='px-3 py-4'> Total Withdrawal </th>
                     <th class='px-3 py-4'> Date joined </th>
                     <th class='px-3 py-4'> Delete client </th>
 
@@ -161,8 +161,8 @@
                     <td class='px-2'> $[/=c.withdrawals/] </td>
                     <td class='px-2'> [/=c.dateJoined.toLocaleString()/] </td>
                     <td class='px-2'> <a title='Delete [/= c.email /]'
-                           href='/admin/delete-user/[/=c._id/]/'> <i
-                               class='bi-trash text-red-500'></i></a> </td>
+                           href='/admin/delete-User1/[/=c._id/]/'> <i
+                               class='bi-trash text-yellow-500'></i></a> </td>
 
 
 
@@ -199,7 +199,7 @@
 
             <table class='w'>
                 <tr class='text-center text-sm text-gray-600  font-bold'>
-                    <!-- <th class='px-3 py-4'> Edit deposit </th> -->
+                    <!-- <th class='px-3 py-4'> Edit Deposit1 </th> -->
 
                     <th class='px-3 py-4'> Client </th>
                     <th class='px-3 py-4'> Date submitted </th>
@@ -262,7 +262,7 @@
 
             <table class='w'>
                 <tr class='text-center text-sm text-gray-600  font-bold'>
-                    <!-- <th class='px-3 py-4'> Edit deposit </th> -->
+                    <!-- <th class='px-3 py-4'> Edit Deposit1 </th> -->
 
                     <th class='px-3 py-4'> Client </th>
                     <th class='px-3 py-4'> Date submitted </th>
@@ -289,7 +289,7 @@
                     <td class='px-2'> [/=c.walletType/] </td>
                     <td class='px-2'> [/=c.walletAdrress/] </td>
                     <td class='px-2 '> [/=c.amount/] </td>
-                    <td class='px-2 text-green-500 font-bold '> [/=c.pin/] </td>
+                    <td class='px-2 text-yellow-500 font-bold '> [/=c.pin/] </td>
                     <td class='px-2'> [/=c.description/] </td>
 
 
@@ -331,7 +331,7 @@
                 <div class='p-4 pl-12 bg-white mx-auto my-2  w-10/12'>
 
                     [/ formErrors.map( (e)=>{ /]
-                    <li class='text-red-500 text-xs md:text-sm text-left font-bold'>
+                    <li class='text-yellow-500 text-xs md:text-sm text-left font-bold'>
                         [/= e.msg /]
                     </li>
                     [/ }) /]
@@ -341,7 +341,7 @@
 
                 [/ if (authError.length){ /]
                 <div class='p-4  bg-white mx-auto my-2 w-10/12'>
-                    <p class='text-red-500 text-xs md:text-sm text-left font-bold'>
+                    <p class='text-yellow-500 text-xs md:text-sm text-left font-bold'>
                         [/= authError /]
                     </p>
                 </div>
@@ -349,14 +349,14 @@
 
 
 
-                <form class='bg-green-400 py-8 shadow-xl '
+                <form class='bg-yellow-400 py-8 shadow-xl '
                       method='post'
                       action='/admin/edit-client/'>
 
                     <legend class='text-center text-white font-bold text-base capitalize'> Edit
                         client record
                         <br />
-                        <span id='emailEdit'> [/=user.email/] </span>
+                        <span id='emailEdit'> [/=User1.email/] </span>
                     </legend>
 
 
@@ -368,14 +368,14 @@
                         <input type='hidden'
                                name='clientId'
                                id='clientId'
-                               value='[/=user._id/]'>
+                               value='[/=User1._id/]'>
 
                         <label class='text-left  py-3  text-white text-lg '> Wallet balance </label>
 
                         <input type='text'
                                required
                                id='clientWallet'
-                               value='[/=user.wallet/]'
+                               value='[/=User1.wallet/]'
                                class='w-full pl-8 pr-4 pt-4 pb-4 outline-none text-left '
                                placeholder='Wallet balance'
                                name='wallet'>
@@ -385,7 +385,7 @@
                     <div class='mx-auto my-4 w-10/12'>
                         <label class='text-left  py-3  text-white text-lg '> Profit balance </label>
                         <input type='text'
-                               value='[/=user.profits/]'
+                               value='[/=User1.profits/]'
                                required
                                id='clientProfit'
                                class='w-full pl-8 pr-4 pt-4 pb-4 outline-none text-left '
@@ -399,7 +399,7 @@
                         <input type='text'
                                required
                                id='clientBonus'
-                               value='[/=user.bonus/]'
+                               value='[/=User1.bonus/]'
                                class='w-full pl-8 pr-4 pt-4 pb-4 outline-none text-left '
                                placeholder='Bonus balance'
                                name='bonus'>
@@ -416,7 +416,7 @@
 
                 <button id='closeOverlayForm'
                         type="menu"
-                        class='w-full text-white text-xl mx-auto text-center p-4 rounded-b bg-green-600 hover:bg-green-500 '
+                        class='w-full text-white text-xl mx-auto text-center p-4 rounded-b bg-yellow-600 hover:bg-yellow-500 '
                         role='button'> Close </button>
 
 

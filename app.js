@@ -6,7 +6,7 @@ var passport = require('passport');
 var routes = require('./routes');
 var flashMessages = require('connect-flash');
 var middlewares = require('./middlewares');
-var User = require('./models/user');
+var User1 = require('./models/user');
 var startDb = require('./models/index');
 var MongoDBStore = require('connect-mongodb-session')(expressSession);
 
@@ -45,11 +45,11 @@ app.set('view options', {
 	delimiter: '/',
 });
 
-passport.use(User.createStrategy());
+passport.use(User1.createStrategy());
 
-passport.serializeUser(User.serializeUser());
+passport.serializeUser(User1.serializeUser());
 
-passport.deserializeUser(User.deserializeUser());
+passport.deserializeUser(User1.deserializeUser());
 
 app.use(middlewares.context);
 

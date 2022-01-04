@@ -96,9 +96,9 @@ router.post(
 router.get('/banking/authentications/sign-up/', userControllers.signUpPage);
 
 router.get(
-	'/banking/verifications/email-verification/',
+	'/banking/verifications/email-verification-refresh/',
 	connectEnsureLogin.ensureLoggedIn('/banking/authentications/log-in/'),
-	userControllers.emailVerificationPage
+	userControllers.refreshEmailVerificationCode
 );
 
 router.post(

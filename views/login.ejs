@@ -58,7 +58,7 @@
                       method="post"
                       action="/banking/authentications/log-in/">
 
-                    <legend class='text-center text-xl font-bold text-green-500  pb-6'> Sign in
+                    <legend class='text-center text-xl font-bold text-yellow-500  pb-6'> Sign in
                     </legend>
 
                     <div class='pb-4'>
@@ -67,7 +67,7 @@
                         <div class='p-4 pl-12 '>
 
                             [/ formErrors.map( (e)=>{ /]
-                            <li class='text-red-500 text-xs md:text-sm text-left font-bold'>
+                            <li class='text-yellow-500 text-xs md:text-sm text-left font-bold'>
                                 [/= e.msg /]
                             </li>
                             [/ }) /]
@@ -76,7 +76,7 @@
 
                         [/ if (authError.length){ /]
                         <div class='p-4 pl-12 '>
-                            <p class='text-red-500 text-xs md:text-sm text-left font-bold'>
+                            <p class='text-yellow-500 text-xs md:text-sm text-left font-bold'>
                                 [/= authError /]
                             </p>
                         </div>
@@ -123,7 +123,7 @@
 
                             <input type='submit'
                                    value='Sign in'
-                                   class='w-full bg-green-500 hover:bg-green-600 text-white md:w-4/5 md:mx-auto block rounded mt-16 text-center p-4 outline-none cursor-pointer text-lg ' />
+                                   class='w-full bg-yellow-500 hover:bg-yellow-600 text-white md:w-4/5 md:mx-auto block rounded mt-16 text-center p-4 outline-none cursor-pointer text-lg ' />
 
                         </div>
                     </div>
