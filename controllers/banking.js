@@ -7,7 +7,7 @@ var {Deposit1, Withdrawal1, AuthPin1} = require('./../models/transaction');
 function servePageByUrl(req, res, next) {
 	const pageName = req.params.pageName;
 
-	const pages = ['security', 'investment', 'contest', 'about'];
+	const pages = ['security', 'investment', 'contest', 'about', 'error-404'];
 
 	if (!pages.includes(pageName)) {
 		next();

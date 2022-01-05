@@ -57,7 +57,7 @@ app.use(routes);
 
 // 404
 app.use('*', (req, res) => {
-	res.render('404');
+	res.render('error-404');
 });
 
 // 500
