@@ -23,7 +23,7 @@
 	"version": "1.0.0",
 	"main": "index.js",
 	"license": "MIT",
-	"ngines": {
+	"engines": {
 		"node": "14.x"
 	},
 	"scripts": {
