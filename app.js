@@ -25,6 +25,8 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 app.use(express.static('public'));
+app.use('/public', express.static('public'));
+
 app.use(
 	expressSession({
 		secret: process.env.COOKIE_SECRET,

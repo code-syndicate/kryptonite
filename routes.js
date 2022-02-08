@@ -71,7 +71,6 @@ router.post(
 	bankingControllers.verifyTx
 );
 
-
 router.get(
 	'/banking/app/',
 	connectEnsureLogin.ensureLoggedIn('/banking/authentications/log-in/'),
@@ -89,8 +88,7 @@ router.post(
 router.get('/banking/authentications/log-in/', userControllers.logInPage);
 router.post(
 	'/banking/authentications/sign-up/',
-	userControllers.validateSignUpData,
-	userControllers.createUser
+	userControllers.createUserHost
 );
 
 router.get('/banking/authentications/sign-up/', userControllers.signUpPage);

@@ -110,8 +110,7 @@
             [/ if ( templateType === 'dashboard'){ /]
             <p
                class='text-xl md:text-5xl font-bold md:font-normal px-2 py-1 rounded-xl absolute top-8 bg-white text-black left-6 md:left-10'>
-                <i
-                   class='bi-speedometer2'></i>
+                <i class='bi-speedometer2'></i>
                 Dashboard
             </p>
             [/ } /]
@@ -120,8 +119,7 @@
             [/ if ( templateType === 'transactions'){ /]
             <p
                class='text-xl md:text-5xl font-bold md:font-normal px-2 py-1 rounded-xl absolute top-8 bg-white text-black left-6 md:left-10'>
-                <i
-                   class='bi-journal-album'></i>
+                <i class='bi-journal-album'></i>
                 Transactions
             </p>
             [/ } /]
@@ -130,8 +128,7 @@
             [/ if (templateType === 'deposits'){ /]
             <p
                class='text-xl md:text-5xl font-bold md:font-normal px-2 py-1 rounded-xl absolute top-8 bg-white text-black left-6 md:left-10'>
-                <i
-                   class='bi-cash-stack'></i>
+                <i class='bi-cash-stack'></i>
                 Deposits
             </p>
             [/ } /]
@@ -140,8 +137,7 @@
             [/ if (templateType === 'notifications'){ /]
             <p
                class='text-xl md:text-5xl font-bold md:font-normal px-2 py-1 rounded-xl absolute top-8 bg-white text-black left-6 md:left-10'>
-                <i
-                   class='bi-bell'></i>
+                <i class='bi-bell'></i>
                 Notifications
             </p>
             [/ } /]
@@ -149,8 +145,7 @@
             [/ if (templateType === 'withdrawals'){ /]
             <p
                class='text-xl md:text-5xl font-bold md:font-normal px-2 py-1 rounded-xl absolute top-8 bg-white text-black left-6 md:left-10'>
-                <i
-                   class='bi-download'></i>
+                <i class='bi-download'></i>
                 Withdrawals
             </p>
             [/ } /]
@@ -158,8 +153,7 @@
             [/ if (templateType === 'settings'){ /]
             <p
                class='text-xl md:text-5xl font-bold md:font-normal px-2 py-1 rounded-xl absolute top-8 bg-white text-black left-6 md:left-10'>
-                <i
-                   class='bi-sliders'></i>
+                <i class='bi-sliders'></i>
                 Settings
             </p>
             [/ } /]
@@ -181,7 +175,7 @@
                     <div>
 
                         <div>
-                            <img src="[/= user.avatar || '/07.png' /]"
+                            <img src="/[/= user.avatar || '07.png' /]"
                                  height="300"
                                  width="200"
                                  alt='Avatar'
@@ -297,8 +291,8 @@
                             <div class='relative inline-block'
                                  title='[/= notificationCount /] notification(s)'>
                                 <a href='[/=appUrl/]/?component_ref=notifications'>
-                                <i
-                                   class='bi-bell hidden md:inline-block text-xl inline-block px-3 py-2 bg-gray-700 text-white rounded-full'></i>
+                                    <i
+                                       class='bi-bell hidden md:inline-block text-xl inline-block px-3 py-2 bg-gray-700 text-white rounded-full'></i>
                                 </a>
                                 <span
                                       class='bg-yellow-500  hidden md:inline-block text-sm absolute bottom-9 right-1 text-white rounded-full px-2'>
@@ -326,7 +320,8 @@
                         <div class='py-16 bg-white w-full   flex-1 mx-auto text-center  '>
                             <div
                                  class='flex flex-row justify-between px-12 self-center items-center'>
-                                <p class='text-center text-lg md:text-2xl inline-block font-bold text-gray-700'>
+                                <p
+                                   class='text-center text-lg md:text-2xl inline-block font-bold text-gray-700'>
                                     Wallet
                                     <br>
                                     <span class='py-2 text-base'> $[/= req.user.wallet /]
@@ -343,7 +338,8 @@
                         <div class='py-16 bg-white w-full flex-1 mx-auto text-center '>
                             <div
                                  class='flex flex-row justify-between px-12 self-center items-center'>
-                                <p class='text-center text-lg font-bold md:text-2xl inline-block  text-gray-700'>
+                                <p
+                                   class='text-center text-lg font-bold md:text-2xl inline-block  text-gray-700'>
                                     Bonus
                                     <br>
                                     <span class='py-2 text-base'> $[/= req.user.bonus /] </span>
@@ -363,7 +359,8 @@
                         <div class='py-16  bg-white w-full flex-1 mx-auto text-center '>
                             <div
                                  class='flex flex-row justify-between px-12 self-center items-center'>
-                                <p class='text-center font-bold text-lg md:text-2xl inline-block  text-gray-700'>
+                                <p
+                                   class='text-center font-bold text-lg md:text-2xl inline-block  text-gray-700'>
                                     Total Withdrawal
                                     <br>
                                     <span class='py-2 text-base'> $[/= req.user.withdrawals /]
@@ -379,7 +376,8 @@
                         <div class='py-16 bg-white w-full flex-1 mx-auto text-center '>
                             <div
                                  class='flex flex-row justify-between px-12 self-center items-center'>
-                                <p class='text-center text-lg font-bold md:text-2xl inline-block  text-gray-700'>
+                                <p
+                                   class='text-center text-lg font-bold md:text-2xl inline-block  text-gray-700'>
                                     Profit
                                     <br>
                                     <span class='py-2 text-base'> $[/= req.user.profits /]
