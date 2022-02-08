@@ -183,6 +183,7 @@
 
                             <h2
                                 class='font-semibold text-center text-gray-700 px-1 text-xl md:text-2xl capitalize'>
+                                Hello,
                                 [/= auth.user ? auth.user.firstname + ' ' + auth.user.lastname :
                                 "Anonymous Anonymous" /] </h2>
                             <p class=' text-center px-1 text-base md:text-lg '>
@@ -310,6 +311,32 @@
 
                     [/ if (templateType !== 'notifications' && templateType !== 'settings' &&
                     templateType !== 'transactions' && templateType !== 'email-verification'){ /]
+
+
+
+
+                    <div class="md:hidden bg-gray-900 py-8">
+                        <img src="/[/= user.avatar || '07.png' /]"
+                             height="300"
+                             width="150"
+                             alt='Avatar'
+                             class="rounded-full block mx-auto my-4 border-4 border-gray-300" />
+
+                        <h2
+                            class='font-semibold text-center text-white px-1 text-xl md:text-2xl capitalize'>
+                            Hello,
+                            [/= auth.user ? auth.user.firstname + ' ' + auth.user.lastname :
+                            "Anonymous Anonymous" /] </h2>
+                        <p class=' text-center text-white px-1 text-base md:text-lg '>
+                            [/= auth.user ? auth.user.email : "Anonymous " /] </p>
+
+                        <p
+                           class="pt-4 pl-4 text-sm text-white text-left border-t border-white mt-4">
+                            <i class="bi-star"></i>
+                            Welcome
+                            to your dashboard [/= auth.user ? auth.user.firstname : "Anonymous" /].
+                        </p>
+                    </div>
 
 
 

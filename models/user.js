@@ -1,10 +1,10 @@
 var passportLocalMongoose = require('passport-local-mongoose');
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
-var {nanoid} = require('nanoid');
+var {nanoid, customAlphabet} = require('nanoid');
 
 function genVerificationCode() {
-	return nanoid(8);
+	return customAlphabet('0123456789', 8)();
 }
 
 function genReferralCode() {
