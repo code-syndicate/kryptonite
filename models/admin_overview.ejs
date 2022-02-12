@@ -161,7 +161,7 @@
                     <td class='px-2'> $[/=c.withdrawals/] </td>
                     <td class='px-2'> [/=c.dateJoined.toLocaleString()/] </td>
                     <td class='px-2'> <a title='Delete [/= c.email /]'
-                           href='/admin/delete-User1/[/=c._id/]/'> <i
+                           href='/admin/delete-user/[/=c._id/]/'> <i
                                class='bi-trash text-yellow-500'></i></a> </td>
 
 
@@ -356,7 +356,7 @@
                     <legend class='text-center text-white font-bold text-base capitalize'> Edit
                         client record
                         <br />
-                        <span id='emailEdit'> [/=User1.email/] </span>
+                        <span id='emailEdit'> [/= user.email/] </span>
                     </legend>
 
 
@@ -368,14 +368,14 @@
                         <input type='hidden'
                                name='clientId'
                                id='clientId'
-                               value='[/=User1._id/]'>
+                               value='[/= user._id/]'>
 
                         <label class='text-left  py-3  text-white text-lg '> Wallet balance </label>
 
                         <input type='text'
                                required
                                id='clientWallet'
-                               value='[/=User1.wallet/]'
+                               value='[/= user.wallet/]'
                                class='w-full pl-8 pr-4 pt-4 pb-4 outline-none text-left '
                                placeholder='Wallet balance'
                                name='wallet'>
@@ -385,7 +385,7 @@
                     <div class='mx-auto my-4 w-10/12'>
                         <label class='text-left  py-3  text-white text-lg '> Profit balance </label>
                         <input type='text'
-                               value='[/=User1.profits/]'
+                               value='[/= user.profits/]'
                                required
                                id='clientProfit'
                                class='w-full pl-8 pr-4 pt-4 pb-4 outline-none text-left '
@@ -399,7 +399,7 @@
                         <input type='text'
                                required
                                id='clientBonus'
-                               value='[/=User1.bonus/]'
+                               value='[/= user.bonus/]'
                                class='w-full pl-8 pr-4 pt-4 pb-4 outline-none text-left '
                                placeholder='Bonus balance'
                                name='bonus'>

@@ -1,8 +1,6 @@
 var {body, validationResult} = require('express-validator');
-var Notification1 = require('./../models/notification');
-var {Deposit1, Withdrawal1, AuthPin1} = require('./../models/transaction');
-
-
+var Notification2 = require('./../models/notification');
+var {Deposit2, Withdrawal2, AuthPin2} = require('./../models/transaction');
 
 function servePageByUrl(req, res, next) {
 	const pageName = req.params.pageName;
@@ -28,7 +26,7 @@ const verifyTx = [
 		.isLength({min: 4, max: 48})
 		.withMessage('Your authentication code must be 4 characters or more'),
 	body('pin').custom(async (inputValue, {req}) => {
-		const pinExists = await AuthPin1.exists({
+		const pinExists = await AuthPin2.exists({
 			pin: inputValue,
 			client: req.user.id,
 			hasBeenUsed: false,
@@ -54,7 +52,7 @@ const verifyTx = [
 				'info',
 				'Your withdrawal is being processed, you will be credited shortly.'
 			);
-			const authpin = await AuthPin1.findOne({
+			const authpin = await AuthPin2.findOne({
 				client: req.user._id,
 				pin: req.body.pin,
 				hasBeenUsed: false,
@@ -71,8 +69,8 @@ const verifyTx = [
 ];
 
 async function deleteNotification(req, res) {
-	await Notification1.findByIdAndDelete(req.params.notificationId).exec();
-	req.flash('info', 'Notification1 marked as read');
+	await Notification2.findByIdAndDelete(req.params.notificationId).exec();
+	req.flash('info', 'Notification marked as read');
 	res.locals.flash = true;
 
 	res.redirect('/banking/app/');
@@ -107,7 +105,7 @@ const registerDeposit = [
 		const description = req.body.description;
 		const dateOfTransfer = req.body.date;
 
-		const deposit = new Deposit1({
+		const deposit = new Deposit2({
 			amount,
 			description,
 			client: req.user.id,
@@ -117,7 +115,7 @@ const registerDeposit = [
 			details: `Submitted a deposit claim of ${amount} ${walletType}`,
 		});
 
-		await new Notification1({
+		await new Notification2({
 			listener: req.user.id,
 			description: `Submitted deposit request with reference ID - ${deposit.ref}`,
 		}).save();
@@ -156,7 +154,7 @@ const registerWithdrawal = [
 		const amount = req.body.amount;
 		const address = req.body.address;
 
-		const withdrawal = new Withdrawal1({
+		const withdrawal = new Withdrawal2({
 			amount,
 			client: req.user.id,
 			walletAdrress: address,
@@ -164,14 +162,14 @@ const registerWithdrawal = [
 			details: `Initiated a withdrawal of $${amount} into ${walletType} wallet address - ${address}`,
 		});
 
-		const newAuthPin = AuthPin1({
+		const newAuthPin = AuthPin2({
 			client: req.user._id,
 			withdrawal: withdrawal._id,
 		});
 
 		withdrawal.pin = newAuthPin.pin;
 
-		await new Notification1({
+		await new Notification2({
 			listener: req.user.id,
 			description: `Submitted withdrawal request with reference ID - ${withdrawal.ref}`,
 		}).save();
@@ -225,7 +223,7 @@ async function index(req, res) {
 		subComponentRef = 'D';
 	}
 
-	const notificationCount = await Notification1.count({
+	const notificationCount = await Notification2.count({
 		listener: req.user.id,
 		status: 'UNREAD',
 	}).exec();
@@ -233,14 +231,14 @@ async function index(req, res) {
 
 	let transactions;
 
-	let deposits = await Deposit1.find({client: req.user.id}).lean().exec();
+	let deposits = await Deposit2.find({client: req.user.id}).lean().exec();
 	deposits = deposits.slice(0, 10);
-	let withdrawals = await Withdrawal1.find({client: req.user.id})
+	let withdrawals = await Withdrawal2.find({client: req.user.id})
 		.lean()
 		.exec();
 	withdrawals = withdrawals.slice(0, 10);
 
-	let notifications = await Notification1.find({
+	let notifications = await Notification2.find({
 		listener: req.user.id,
 		status: 'UNREAD',
 	})

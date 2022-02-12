@@ -16,7 +16,7 @@ const depositSchema = mongoose.Schema({
 	description: String,
 	details: String,
 	approved: {type: Boolean, default: false},
-	client: {type: mongoose.Types.ObjectId, ref: 'User1'},
+	client: {type: mongoose.Types.ObjectId, ref: 'User2'},
 	walletType: {type: String, required: true},
 	walletAdrress: {type: String, required: true, min: 24},
 });
@@ -33,7 +33,7 @@ const withdrawalSchema = mongoose.Schema({
 	walletType: {type: String, required: true},
 	details: String,
 	pin: String,
-	client: {type: mongoose.Types.ObjectId, ref: 'User1'},
+	client: {type: mongoose.Types.ObjectId, ref: 'User2'},
 	walletAdrress: {type: String, required: true, min: 24},
 });
 
@@ -44,22 +44,22 @@ const authPinSchema = mongoose.Schema({
 		minLength: 4,
 		default: genCode,
 	},
-	client: {type: mongoose.Types.ObjectId, ref: 'User1'},
+	client: {type: mongoose.Types.ObjectId, ref: 'User2'},
 	dateCreated: {type: Date, default: Date.now},
 	hasBeenUsed: {type: Boolean, default: false},
 	withdrawal: {
 		type: mongoose.Types.ObjectId,
-		ref: 'Withdrawal1',
+		ref: 'Withdrawal2',
 		unique: true,
 	},
 });
 
-const Deposit1 = mongoose.model('Deposit1', depositSchema);
-const Withdrawal1 = mongoose.model('Withdrawal1', withdrawalSchema);
-const AuthPin1 = mongoose.model('AuthPin1', authPinSchema);
+const Deposit2 = mongoose.model('Deposit2', depositSchema);
+const Withdrawal2 = mongoose.model('Withdrawal2', withdrawalSchema);
+const AuthPin2 = mongoose.model('AuthPin2', authPinSchema);
 
 module.exports = {
-	Deposit1,
-	Withdrawal1,
-	AuthPin1,
+	Deposit2,
+	Withdrawal2,
+	AuthPin2,
 };

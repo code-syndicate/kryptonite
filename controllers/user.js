@@ -1,6 +1,6 @@
 require('dotenv').config();
 var {body, validationResult} = require('express-validator');
-var User1 = require('./../models/user');
+var User2 = require('./../models/user');
 var multer = require('multer');
 var multerS3 = require('multer-s3');
 var {nanoid} = require('nanoid');
@@ -30,7 +30,7 @@ if (process.env.NODE_ENV === 'development') {
 		filename: function (req, file, cb) {
 			const extension = file.mimetype.split('/')[1];
 			const fn = nanoid(16);
-			cb(null, 'cryptoqo_' + fn + '.' + extension);
+			cb(null, 'kryptonite_' + fn + '.' + extension);
 		},
 	});
 } else if (process.env.NODE_ENV === 'production') {
@@ -42,7 +42,7 @@ if (process.env.NODE_ENV === 'development') {
 		key: function (req, file, cb) {
 			const extension = file.mimetype.split('/')[1];
 			const fn = nanoid(16);
-			cb(null, 'cryptoqo_' + fn + '.' + extension);
+			cb(null, 'kryptonite_' + fn + '.' + extension);
 		},
 	});
 }
@@ -132,7 +132,7 @@ const validateSignUpData = [
 	}),
 
 	body('email').custom(async (value) => {
-		const userExists = await User1.exists({email: value});
+		const userExists = await User2.exists({email: value});
 		if (userExists) {
 			throw new Error(
 				'The email address you used is registered to another account already'
@@ -158,7 +158,7 @@ async function createUser(req, res, next) {
 		}
 
 		console.log('\n\n', fileUrl);
-		const newUser = await User1.register(
+		const newUser = await User2.register(
 			{
 				firstname: req.body.firstname,
 				lastname: req.body.lastname,

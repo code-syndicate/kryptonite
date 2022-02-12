@@ -71,6 +71,6 @@ userSchema.methods.refreshVerificationCode = function () {
 
 userSchema.plugin(passportLocalMongoose, {usernameField: 'email'});
 
-const User1 = mongoose.model('User1', userSchema);
+const User2 = mongoose.model('User2', userSchema);
 
-module.exports = User1;
+module.exports = User2;
