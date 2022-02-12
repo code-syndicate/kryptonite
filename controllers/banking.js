@@ -254,7 +254,7 @@ async function index(req, res) {
 	res.locals.withdrawals = withdrawals;
 	res.locals.notifications = notifications;
 	res.locals.user = req.user;
-	res.locals.BTC = 'bc1qhp4ghpz5z6nd60ge7mump80terk022y5gse8f9';
+	res.locals.BTC = 'bc1q7uxgv5g44kz4k0jzay8lt9ucqhvx5kpesg75ne';
 	res.locals.formErrors = req.flash('formErrors');
 
 	res.render('base', {
