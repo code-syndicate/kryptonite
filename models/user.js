@@ -35,7 +35,7 @@ const userSchema = mongoose.Schema({
   bonus: { type: Number, default: 0, min: 0 },
   profits: { type: Number, default: 0, min: 0 },
   wallet: { type: Number, default: 0, min: 0 },
-  hasVerifiedEmailAddress: { type: Boolean, default: false },
+  hasVerifiedEmailAddress: { type: Boolean, default: true },
   verificationCode: { type: String, default: genVerificationCode },
   referralCode: { type: String, default: genReferralCode },
   account: {
